@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "31569511933-pd768cnl9rj6mp2balo7e3fiej3prban.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sdlinventory.android.inventorymanagement",
+            "certificate_hash": "c0fd17637bcbd64a6bdfa950cdc1a995eb0863d6"
+          }
+        },
+        {
           "client_id": "31569511933-lnohg6oc6n5ffsa2cgi3ogo1qi34vjpk.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31569511933-lnohg6oc6n5ffsa2cgi3ogo1qi34vjpk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

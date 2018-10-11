@@ -1,6 +1,7 @@
 package com.sdlinventory.android.inventorymanagement;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
@@ -21,19 +22,22 @@ public class staples_dept extends Fragment {
     Context context;
 
     private List<String> ProductName;
+    private List<String> ProductPrice;
+    private List<String> Brand;
 
-    private final int android_image_urls[] = {
-            R.drawable.download,
-            R.drawable.download,
-            R.drawable.download,
-            R.drawable.download,
-            R.drawable.download,
-            R.drawable.download,
-            R.drawable.download,
-            R.drawable.download,
-            R.drawable.download,
-            R.drawable.download,
-            R.drawable.download
+    private final String ProductImage[] = {
+            "https://goo.gl/images/BnxMhN",
+            "https://goo.gl/images/BnxMhN",
+            "https://goo.gl/images/BnxMhN",
+            "https://goo.gl/images/BnxMhN",
+            "https://goo.gl/images/BnxMhN",
+            "https://goo.gl/images/BnxMhN",
+            "https://goo.gl/images/BnxMhN",
+            "https://goo.gl/images/BnxMhN",
+            "https://goo.gl/images/BnxMhN",
+            "https://goo.gl/images/BnxMhN"
+
+
     };
 
     @Override
@@ -51,6 +55,9 @@ public class staples_dept extends Fragment {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
 
         ProductName = databaseAccess.getProducts("Inventories",6);
+        ProductPrice = databaseAccess.getProductPrice("Inventories",6);
+        Brand = databaseAccess.getBrand("Inventories",6);
+
 
 
         bindingVariables();
@@ -76,8 +83,26 @@ public class staples_dept extends Fragment {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this.getContext(),2);
         recyclerView.setLayoutManager(layoutManager);
 
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(context, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent product = new Intent(getActivity(),ProductView.class);
+                        product.putExtra("ProductImage",ProductImage[position]);
+                        product.putExtra("ProductName",ProductName.get(position));
+                        product.putExtra("ProductPrice",ProductPrice.get(position));
+                        product.putExtra("ProductBrand",Brand.get(position));
+                        startActivity(product);
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+
         ArrayList<RecyclerViewItemData> RecyclerViewItemData = prepareData();
-        RecyclerViewAdaptor adapter = new RecyclerViewAdaptor(this.getContext(),RecyclerViewItemData);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this.getContext(),RecyclerViewItemData);
         recyclerView.setAdapter(adapter);
 
     }
@@ -87,7 +112,7 @@ public class staples_dept extends Fragment {
         for(int i=0;i<ProductName.size();i++){
             RecyclerViewItemData RecyclerViewItemData = new RecyclerViewItemData();
             RecyclerViewItemData.setProduct_name(ProductName.get(i));
-            RecyclerViewItemData.setProduct_image(android_image_urls[i]);
+            RecyclerViewItemData.setProduct_image(ProductImage[i]);
             product_list.add(RecyclerViewItemData);
         }
         return product_list;

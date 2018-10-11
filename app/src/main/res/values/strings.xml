@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Inventory Management</string>
+    <string name="app_name">Grocery Store</string>
     <string name="title_activity_welcome__page__employee">Welcome_Page_Employee</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
