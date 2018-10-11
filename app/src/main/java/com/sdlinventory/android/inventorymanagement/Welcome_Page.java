@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import java.util.List;
+
 public class Welcome_Page extends AppCompatActivity
 implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,7 +28,6 @@ implements NavigationView.OnNavigationItemSelectedListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_page);
-
         fab=findViewById(R.id.nav_button);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,6 +56,19 @@ implements NavigationView.OnNavigationItemSelectedListener {
                             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                             fragmentTransaction.replace(R.id.content_frame, tabbedDepartments);
                             fragmentTransaction.commit();
+                        }
+                        else if(id==R.id.wishlist) {
+                            wishlist wishList = new wishlist();
+                            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.content_frame, wishList);
+                            fragmentTransaction.commit();
+                        }
+                        else if(id == R.id.storemap){
+                            map Map = new map();
+                            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.content_frame, Map);
+                            fragmentTransaction.commit();
+
                         }
                         return true;
                     }

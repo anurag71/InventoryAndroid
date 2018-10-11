@@ -7,11 +7,70 @@
     android:layout_height="match_parent"
     tools:context=".ProductView">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250sp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/prodImage"
+        android:background="#ffffff"/>
+
+    <TextView
+        android:id="@+id/prodName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/prodImage"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="53dp"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/prodName"
+        android:layout_alignStart="@id/prodName"
+        android:text="Price"
+        android:textSize="25sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview1"
+        android:layout_alignStart="@+id/prodName"
+        android:text="Brand:"
+        android:textSize="25sp"
+        android:textStyle="italic" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Product Details"
-        android:textSize="40sp"/>
+        android:id="@+id/prodPrice"
+        android:layout_toRightOf="@id/textview2"
+        android:layout_below="@id/prodName"
+        android:textSize="25sp"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Brand"
+        android:layout_toRightOf="@id/textview2"
+        android:layout_below="@id/textview1"
+        android:textSize="25sp"
+        android:textStyle="italic"/>
+
+    <Button
+        android:id="@+id/addwishlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="51dp"
+        android:text="Add to Wishlist"/>
 
 </RelativeLayout>

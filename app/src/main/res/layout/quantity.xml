@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="99sp"
+        android:layout_height="32sp"
+        android:text="Enter Quantity"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="95sp"
+        android:layout_height="40sp"
+        android:layout_alignTop="@+id/textView"
+        android:layout_toRightOf="@id/textView"
+        android:ems="5"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_centerHorizontal="true"
+        android:text="Add" />
+</RelativeLayout>
