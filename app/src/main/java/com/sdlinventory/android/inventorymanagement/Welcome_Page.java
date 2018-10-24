@@ -2,6 +2,7 @@ package com.sdlinventory.android.inventorymanagement;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -69,6 +70,16 @@ implements NavigationView.OnNavigationItemSelectedListener {
                             fragmentTransaction.replace(R.id.content_frame, Map);
                             fragmentTransaction.commit();
 
+
+
+
+
+                        }
+
+                        else if(id==R.id.assistant){
+                            Uri uri = Uri.parse("https://assistant.google.com/services/invoke/uid/0000004a35a362db"); // missing 'http://' will cause crashed
+                            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                            startActivity(intent);
                         }
                         return true;
                     }
