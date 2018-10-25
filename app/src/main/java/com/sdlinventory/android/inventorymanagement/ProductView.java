@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -79,6 +80,8 @@ public class ProductView extends AppCompatActivity {
                     databaseAccess.insertWishlist(product,quantity);
                     databaseAccess.close();
                     d.dismiss();
+                    Toast toast = Toast.makeText(getApplicationContext(), "Item added to wishlist", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             });
 

@@ -18,9 +18,6 @@ public class DatabaseAccess {
     private static DatabaseAccess instance;
     Cursor c = null;
 
-    ArrayList list = new ArrayList();
-    ArrayList list1 = new ArrayList();
-
     private DatabaseAccess(Context context) {
         this.openHelper = new DatabaseOpenHelper(context);
     }
@@ -107,16 +104,34 @@ public class DatabaseAccess {
         db.execSQL(query);
     }
 
-    public void displayWishlist() {
+    public List<String> displayWishlistName() {
+        ArrayList list = new ArrayList();
         db = openHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM Wishlist", null);
+        Cursor cursor = db.rawQuery("SELECT prodName FROM Wishlist", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(cursor.getColumnIndex("prodName")));
-            list1.add(cursor.getString(cursor.getColumnIndex("quantity")));
             cursor.moveToNext();
         }
         cursor.close();
+        return list;
+    }
+
+    public List<String> displayWishlistqty() {
+        ArrayList list = new ArrayList();
+        db = openHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT quantity FROM Wishlist", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(cursor.getColumnIndex("quantity")));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public boolean deleteTitle(String name)
+    {
+        return db.delete("Wishlist", "prodName" + "=" +'"'+ name+'"', null) > 0;
     }
 
 

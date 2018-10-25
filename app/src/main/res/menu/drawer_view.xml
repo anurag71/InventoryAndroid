@@ -14,8 +14,9 @@
         <item
             android:id="@+id/storemap"
             android:title="Find a Store"/>
+        <item
+            android:id="@+id/assistant"
+            android:title="Assistant" />
     </group>
-    <item
-        android:id="@+id/assistant"
-        android:title="Assistant" />
+
 </menu>

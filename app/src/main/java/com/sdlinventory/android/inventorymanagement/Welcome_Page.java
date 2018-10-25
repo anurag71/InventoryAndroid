@@ -39,6 +39,10 @@ implements NavigationView.OnNavigationItemSelectedListener {
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
         navigationView = findViewById(R.id.nav_view);
+        offers Offers = new offers();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, Offers);
+        fragmentTransaction.commit();
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -69,10 +73,12 @@ implements NavigationView.OnNavigationItemSelectedListener {
                             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                             fragmentTransaction.replace(R.id.content_frame, Map);
                             fragmentTransaction.commit();
-
-
-
-
+                        }
+                        else if(id == R.id.offers){
+                            offers Offers = new offers();
+                            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.content_frame, Offers);
+                            fragmentTransaction.commit();
 
                         }
 
