@@ -92,7 +92,7 @@ public class offers extends Fragment {
                         {
                             code="SALE30";
                         }
-                        Toast toast = Toast.makeText(context,"CPUPON CODE:"+ code, Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(context,"COUPON CODE:"+ code, Toast.LENGTH_SHORT);
                         toast.show();
                     }
 
