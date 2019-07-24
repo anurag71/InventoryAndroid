@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -73,12 +74,23 @@ public class ProductView extends AppCompatActivity {
                     EditText quant;
                     quant = (EditText)d.findViewById(R.id.editText);
                     product = getIntent().getStringExtra("ProductName");
-                    quantity = Integer.parseInt(quant.getText().toString());
-                    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(ProductView.this);
-                    databaseAccess.open();
-                    databaseAccess.insertWishlist(product,quantity);
-                    databaseAccess.close();
-                    d.dismiss();
+
+                    try {
+                        quantity = Integer.parseInt(quant.getText().toString());
+                        if(quantity==0){
+                            throw new Exception();
+                        }
+                        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(ProductView.this);
+                        databaseAccess.open();
+                        databaseAccess.insertWishlist(product, quantity);
+                        databaseAccess.close();
+                        d.dismiss();
+                        Toast toast = Toast.makeText(getApplicationContext(), "Item added to wishlist", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }catch(Exception e){
+                        Toast toast = Toast.makeText(getApplicationContext(), "Quanity cannot be null", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                 }
             });
 

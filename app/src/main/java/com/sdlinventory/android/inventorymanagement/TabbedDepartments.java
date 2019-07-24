@@ -53,8 +53,22 @@ public class TabbedDepartments extends Fragment {
                 else if (frag_position == "staples"){
                     dialog.setContentView(R.layout.gif_layout_meat);
                 }
-                else {
+                else if (frag_position == "fruits"){
                     dialog.setContentView(R.layout.gif_layout_staples);
+                }
+                else if (frag_position == "kitchen"){
+                    dialog.setContentView(R.layout.gif_layout_fruits);
+                }
+                else if (frag_position == "beauty"){
+                    dialog.setContentView(R.layout.gif_layout_kitchen);
+                }
+                else if (frag_position == "cleaning"){
+                    dialog.setContentView(R.layout.gif_layout_beauty);
+                    frag_position="hello";
+                }
+
+                else if (frag_position=="hello"){
+                    dialog.setContentView(R.layout.gif_layout_cleaning);
                 }
                 dialog.setCancelable(true);
 

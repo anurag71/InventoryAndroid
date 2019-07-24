@@ -2,22 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-
-    <!--<WebView-->
-    <!--android:id="@+id/webview1"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentTop="true"-->
-    <!--android:layout_marginTop="0dp"></WebView>-->
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gifviewer"
-        android:src="@drawable/snacks_navigation"
-        android:background="#000000"/>
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="400sp"
+        android:id="@+id/image1234"
+        android:src="@drawable/staples"/>
 
     <Button android:id="@+id/CancelButton"
-        android:layout_below="@id/gifviewer"
+        android:layout_below="@id/image1234"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

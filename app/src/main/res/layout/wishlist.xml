@@ -15,6 +15,16 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         android:visibility="invisible" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="It's a bit lonely here... Add items to your wishlist to view them"
+        android:textStyle="italic"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:id="@+id/textview1234"/>
+
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/RecyclerLayout1"
         android:layout_width="match_parent"

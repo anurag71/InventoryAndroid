@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -39,9 +43,14 @@ public class wishlist extends Fragment {
         context = this.getActivity();
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
-        databaseAccess.displayWishlist();
-        ProductName = databaseAccess.list;
-        Quantity = databaseAccess.list1;
+        ProductName = databaseAccess.displayWishlistName();
+        Quantity = databaseAccess.displayWishlistqty();
+
+        if(!ProductName.isEmpty())
+        {
+            TextView textView=view.findViewById(R.id.textview1234);
+            textView.setVisibility(View.INVISIBLE);
+        }
 
 
         bindingVariables();
@@ -49,6 +58,10 @@ public class wishlist extends Fragment {
         displayProducts();
 
         return view;
+    }
+    public void refresh(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
     }
 
 
@@ -68,6 +81,25 @@ public class wishlist extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(context, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Toast toast = Toast.makeText(context, "Long press to remove item", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+
+                        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
+                        databaseAccess.deleteTitle(ProductName.get(position));
+                        Toast toast = Toast.makeText(context, "Item deleted", Toast.LENGTH_SHORT);
+                        toast.show();
+                        refresh();
+
+                    }
+                })
+        );
 
         ArrayList<RecyclerViewItemData> RecyclerViewItemData = prepareData();
         WishlistRecyclerAdapter adapter = new WishlistRecyclerAdapter(this.getContext(),RecyclerViewItemData);
