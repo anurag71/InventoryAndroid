@@ -1,0 +1,10 @@
+<application>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/Projects/SMSPost/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Android/Projects/SMSPost/app/src/main/res/layout/activity_scanned_barcode.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+</application>
